@@ -11,13 +11,24 @@ function convertir(json){
     for(var i=0; i<json.length;i++){
         var etiqueta="";
         etiqueta="<"+json[i].element+" ";
+        var texto="";
+        if(json[i].text){  
+            texto = json[i].text;  
+        }
         if(json[i].atrib){
             var atributos="";
             for(j in json[i].atrib){
                 var json_temp=json[i].atrib;
                 atributos+=j+"='"+json_temp[j]+"' ";
             }
-            etiqueta+=atributos+">";
+            etiqueta+=atributos+">"+texto;
+            if(json[i].into && json[i].into.length>0){
+                var intoHtml= convertir(json[i].into);
+                etiqueta+=intoHtml;
+                etiqueta+="</"+json[i].element+">";
+            }
+        }else{
+            etiqueta+=">"+texto;
             if(json[i].into && json[i].into.length>0){
                 var intoHtml= convertir(json[i].into);
                 etiqueta+=intoHtml;
