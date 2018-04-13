@@ -58,6 +58,33 @@ var estructura=[
     }
 ]
 
+var json_pago=[
+    {
+        element:"div",
+        atrib:{
+            class:"item-pagos"
+        },
+        into:[
+            {
+                element:"small",
+                into:[
+                    {
+                        text:"Número de referencia"
+                    }
+                ]
+            },
+            {
+                element:"p",
+                into:[
+                    {
+                        text:"asfasfasfas"
+                    }
+                ]
+            }
+        ]
+    }
+];
+
 var ConvertJsontoHtml=new ConvertJsonToHtml(estructura);
 var html1 = ConvertJsontoHtml.render();
 
@@ -73,6 +100,8 @@ var html2 = '<div class="algo otra cosa" id="leo1">'+
 
 $(document).ready(function(){
     //ejemplo 1
+    
+
     $("#contenedor1").html(html1);
     $("#contenedor2").html(html2);
 
@@ -84,5 +113,8 @@ $(document).ready(function(){
     otra_estructura[1].atrib.class="agregando clases nuevas"; 
     var ConvertJsontoHtml2=new ConvertJsonToHtml(otra_estructura);
     $("#contenedor3").html(ConvertJsontoHtml2.render());
+
+    var ConvertJsontoHtml2=new ConvertJsonToHtml(json_pago);
+    console.log(ConvertJsontoHtml2.render());
 });
 </script>
