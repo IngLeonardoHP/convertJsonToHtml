@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Convert Json To Html</title>
+</head>
+<body>
+    <div id="contenedor1"></div>
+    <div id="contenedor2"></div>
+    <div id="contenedor3"></div>
+</body>
+</html>
+
+<script>
+
+//con ConvertJsonToHtml
+
+//la estructura propuesta te permite ubicarte mejor en el codigo siento este un json
+//tambien funciona para reciclar codigo, incluso para la editar los mismos
+var estructura=[
+    {
+        element:"div",
+        atrib:{
+            class:"algo otra cosa",
+            id:"leo1"
+        },
+        into:[
+            {
+                element:"input",
+                atrib:{
+                    class:"form-control",
+                    name:"cedula",
+                    type:"text"
+                }
+            },{
+                element:"input",
+                atrib:{
+                    class:"form-control",
+                    name:"nombre",
+                    type:"text"
+                }
+            }
+        ]
+    },
+    {
+        element:"input",
+        atrib:{
+            class:"form-control",
+            id:"input2"
+        }
+    }
+]
+
+var ConvertJsontoHtml=new ConvertJsonToHtml(estructura);
+var html1 = ConvertJsontoHtml.render();
+
+
+//normal
+//esta forma es poco recomendable, sobre todo cuando se usa volumen de etiquetas, te complica 
+var html2 = '<div class="algo otra cosa" id="leo1">'+
+                '<input class="form-control" name="cedula" type="text">'+
+                '<input class="form-control" name="nombre" type="text">'+
+            '</div>'+
+            '<input class="form-control" id="input2">'+
+            '</div>';
+
+$(document).ready(function(){
+    //ejemplo 1
+    $("#contenedor1").html(html1);
+    $("#contenedor2").html(html2);
+
+    //ejemplo 2 editando una estructura base, para crear una nueva sin tener que escribir todo el codigo html
+    //como seria el caso si lo hiceramos de la forma tradicional
+    otra_estructura=estructura;
+    otra_estructura[0].atrib.id="cambiando_el_id";
+    otra_estructura[0].atrib.class+=" sumandole una clase";
+    otra_estructura[1].atrib.class="agregando clases nuevas"; 
+    var ConvertJsontoHtml2=new ConvertJsonToHtml(otra_estructura);
+    $("#contenedor3").html(ConvertJsontoHtml2.render());
+});
+</script>
