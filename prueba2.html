@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Convert Json To Html</title>
+</head>
+<body>
+    <div id="contenedor1"></div>
+</body>
+</html>
+
+<script>
+
+$(document).ready(function(){
+    //otra estructura
+    var json_pago=[
+        {
+            element:"div",
+            atrib:{
+                class:"item-pagos"
+            },
+            into:[
+                {
+                    element:"small",
+                    into:[
+                        {
+                            text:"Número de referencia"
+                        }
+                    ]
+                },
+                {
+                    element:"p",
+                    into:[
+                        {
+                            text:"v.numero_referencia"
+                        }
+                    ]
+                },
+                {
+                    element:"small",
+                    into:[
+                        {
+                            text:"Monto"
+                        }
+                    ]
+                },
+                {
+                    element:"p",
+                    into:[
+                        {
+                            text:"v.monto"
+                        }
+                    ]
+                },
+                {
+                    element:"small",
+                    into:[
+                        {
+                            text:"Representante"
+                        }
+                    ]
+                },
+                {
+                    element:"p",
+                    into:[
+                        {
+                            text:"v.representante"+"<br>"+"v.rif_ci"
+                        }
+                    ]
+                },
+                {
+                    element:"small",
+                    into:[
+                        {
+                            text:"Status"
+                        }
+                    ]
+                },
+                {
+                    element:"p",
+                    text:"status_pago",
+                    into:[
+                        {
+                            element:"div",
+                            atrib:{
+                                class:"opciones-status-pago center-align"
+                            },
+                            into:[
+                                {
+                                    element:"p",
+                                    into:[
+                                        {
+                                            element:"input",
+                                            atrib:{
+                                                type:"radio",
+                                                name:"status_pago",
+                                                value:"0",
+                                                id:"eliminado"
+                                            }
+                                        },
+                                        {
+                                            element:"label",
+                                            atrib:{
+                                                for:"eliminado"
+                                            },
+                                            into:[
+                                                {
+                                                    text:"Eliminado"
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    element:"small",
+                    into:[
+                        {
+                            text:"Soporte de pago"
+                        }
+                    ]
+                },
+                {
+                    element:"p",
+                    into:[
+                        {
+                            element:"a",
+                            text:"Descargar",
+                            atrib:{
+                                href:"v.soporte",
+                                target:"_blank"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    console.log(json_pago);
+    var ConvertJsontoHtml3=new ConvertJsonToHtml(json_pago);
+    $("#contenedor1").html(ConvertJsontoHtml3.render());
+});
+</script>
