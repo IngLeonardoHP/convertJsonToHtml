@@ -1,12 +1,17 @@
 function ConvertJsonToHtml(json)    {
     this.json=json;
-    this.convertir=convertir;
+    this.array=[];
+    this.convert=convert;
     this.render=render;
     this.isEmpty=isEmpty;
-    this.html = this.convertir(json);
+    this.setValue=setValue;
+    this.getValue=getValue;
+    if(json){
+        this.html = this.convert(json);
+    }
 }
 
-function convertir(json){
+function convert(json){
     var etiquetas="";
     for(var i=0; i<json.length;i++){
         var etiqueta="";
@@ -24,14 +29,14 @@ function convertir(json){
                 }
                 etiqueta+=atributos+">"+texto;
                 if(json[i].into && json[i].into.length>0){
-                    var intoHtml= convertir(json[i].into);
+                    var intoHtml= convert(json[i].into);
                     etiqueta+=intoHtml;
                     etiqueta+="</"+json[i].element+">";
                 }
             }else{
                 etiqueta+=">"+texto;
                 if(json[i].into && json[i].into.length>0){
-                    var intoHtml= convertir(json[i].into);
+                    var intoHtml= convert(json[i].into);
                     etiqueta+=intoHtml;
                     etiqueta+="</"+json[i].element+">";
                 }
@@ -58,4 +63,13 @@ function isEmpty(obj) {
 
 function render(){
     return this.html;
+}
+
+function setValue(name, obj){
+    this.array[name]=JSON.stringify(obj);
+}
+
+function getValue(name){
+    var _obj_json=JSON.parse(this.array[name]);
+    return _obj_json;
 }
