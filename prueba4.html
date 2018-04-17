@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+    <script type="text/javascript" src="assets/config_convert.js"></script>
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Convert Json To Html</title>
+</head>
+<body>
+    <div id="contenedor1"></div>
+</body>
+</html>
+
+<script>
+
+$(document).ready(function(){
+    var json=[
+        {
+            element:"div",
+            atrib:{
+                class:"col s12 l4"
+            },
+            into:[
+                {
+                    element:"div",
+                    atrib:{
+                        class:"btn-document center-align white-text blue-one",
+                        onclick:"javascript:detalDocument();"
+                    },
+                    text:"eti",
+                    into:[]
+                },
+                {
+                    element:"div",
+                    atrib:{
+                        id:"",
+                        class:"cont-documet"
+                    },
+                    into:[
+                        {
+                            element:"div",
+                            atrib:{
+                                class:"col s10"
+                            },
+                            into:[
+                                {
+                                    element:"p",
+                                    atrib:{
+                                        class:"p-name"
+                                    },
+                                    text:"el nombre"
+                                }
+                            ]
+                        },
+                        {
+                            element:"div",
+                            atrib:{
+                                class:"col s12"
+                            },
+                            into:[
+                                {
+                                    element:"i",
+                                    atrib:{
+                                        class:"ion-eye",
+                                        onclick:""
+                                    },
+                                    text:"el icono"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+    $("#contenedor1").html(convertir.convert(json));
+});
+</script>

@@ -28,14 +28,14 @@ function convert(json){
                     atributos+=" "+j+"='"+json_temp[j]+"'";
                 }
                 etiqueta+=atributos+">"+texto;
-                if(json[i].into && json[i].into.length>0){
+                if(json[i].into){
                     var intoHtml= convert(json[i].into);
                     etiqueta+=intoHtml;
                     etiqueta+="</"+json[i].element+">";
                 }
             }else{
                 etiqueta+=">"+texto;
-                if(json[i].into && json[i].into.length>0){
+                if(json[i].into){
                     var intoHtml= convert(json[i].into);
                     etiqueta+=intoHtml;
                     etiqueta+="</"+json[i].element+">";
@@ -48,6 +48,7 @@ function convert(json){
             }
             etiqueta+=texto;
         }
+        alert(etiqueta);
         etiquetas+=etiqueta;
     }
     return etiquetas;
