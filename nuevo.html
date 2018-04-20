@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="assets/convertJsonToHtml.js"></script>
+    <script src="assets/config.js"></script>
+    <style>
+        .los-botones{
+            padding: 10px;
+            background: #ccc;
+        }
+        .los-botones button{
+            border: 2px solid #333;
+        }        
+    </style>
+</head>
+<body>
+    <div id="contenedor"></div>
+</body>
+</html>
+<script>
+    var formulario=convertir.getValue("formulario",["post","mi_servidor.php"]);
+    var nombre=convertir.getValue("input",["nombre","id_nombre","ingrese el nombre aquí","id_input"]);
+    var apellido=convertir.getValue("input",["apellid","id_apellido","ingrese el apellido aquí","id_input_a"]);
+    var boton=convertir.getValue("btn",["blue","aceptar"]);
+    var boton_o=convertir.getValue("btn",["blue","no aceptar"]);
+
+    convertir.addInto(formulario,[nombre,apellido,boton,boton_o]);
+
+    convertir.addAtrib(formulario,["onclick:myFuncion()","type:date"],"id_nombre");
+
+    document.getElementById("contenedor").innerHTML = convertir.convert(formulario);
+
+    function myFuncion(){
+        alert()
+    }
+</script>

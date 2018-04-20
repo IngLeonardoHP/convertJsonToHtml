@@ -5,11 +5,7 @@ var btn={
     atrib:{
         class:"btn blue"
     },
-    into:[
-        {
-            text:""
-        }
-    ]
+    text:"#0"
 }
 convertir.setValue("boton",btn);
 
@@ -24,22 +20,31 @@ var input={
             element:"input",
             atrib:{
                 class:"validate",
-                placeholder:"",
-                id:"",
+                name:"#0",
+                id:"#1",
+                placeholder:"#2",
                 type:"text"
-            }
+            },
+            id:"#1"
         },
         {
             element:"label",
             atrib:{
-                for:""
+                for:"#1"
             },
-            into:[
-                {
-                    text:""
-                }
-            ]
+            text:"#2"
         }
     ]
 }
+
 convertir.setValue("input",input);
+
+var form={
+    element:"form",
+    atrib:{
+        method:"#0",
+        action:"#1"
+    }
+}
+
+convertir.setValue("form",form);

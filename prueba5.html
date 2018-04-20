@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+    <script type="text/javascript" src="assets/config_convert.js"></script>
+    <script type="text/javascript" src="assets/convertJsonToHtml.js"></script>
+</head>
+<body>
+    <div id="contenedor1"></div>
+</body>
+</html>
+
+<script>
+
+    var formulario=convertir.getValue("form",["post","mi_servidor.php"]);
+
+    var nombre=convertir.getValue("input",["nombre","input_name1","Ingrese el nombre"]);
+    var apellido=convertir.getValue("input",["apellido","input_lastname1","Ingrese el apellido"]);
+    var btn=convertir.getValue("boton",["Aceptar"]);
+
+    convertir.addInto(formulario,[nombre,apellido,btn]);
+    convertir.addAtrib(formulario,["onclick:myFuncion()"],"input_lastname1");
+
+    convertir.removeInto(formulario,"input_lastname1");
+
+    document.getElementById("contenedor1").innerHTML=convertir.convert(formulario);
+
+
+    function myFuncion(){
+        console.log("hice un click")
+    }
+
+</script>
