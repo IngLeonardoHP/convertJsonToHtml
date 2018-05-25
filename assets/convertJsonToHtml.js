@@ -81,6 +81,11 @@ function getValue(name,values){
         for(var i=0;i<values.length;i++){
             var code_sus="#"+i;
             var pala_sus=values[i];
+            var temp_pala_sus=pala_sus.split("\n");
+            pala_sus=temp_pala_sus.join("");
+            regex = new RegExp(String.fromCharCode(13), "gi");
+            pala_sus = pala_sus.replace(regex, "");
+            console.log(pala_sus);
             regex = new RegExp(code_sus, "gi");
             stringValue=stringValue.replace(regex,pala_sus);
         }
